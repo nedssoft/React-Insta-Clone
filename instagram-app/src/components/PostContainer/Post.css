@@ -1,0 +1,51 @@
+.post-container {
+  width: 400px;
+  margin: auto;
+}
+.post {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 2rem;
+}
+
+.post .header {
+  display: flex;
+  height: 70px;
+  align-items: center;
+  padding: 0 2rem;
+}
+.post .header img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.post .header h3 {
+  padding: 0.8rem;
+  font-size: 1.6rem;
+}
+
+.post .post-likes {
+  display: flex;
+  flex-direction: column;
+}
+.post .post-likes ul {
+  padding: 0;
+  display: flex;
+  width: 60px;
+}
+.post .post-likes ul li {
+  list-style: none;
+  margin: auto 0.8rem;
+}
+.post .post-likes ul li i {
+  font-size: 1.8rem;
+  color: #ccc;
+}
+.post .post-likes p {
+  padding-left: 0.8rem;
+  font-size: 1.6rem;
+  margin: 0;
+}
+

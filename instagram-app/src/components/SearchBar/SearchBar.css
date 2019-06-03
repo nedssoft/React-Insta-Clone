@@ -5,7 +5,6 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 60%;
 }
 .logo, .icons {
   padding: 0 0.8rem;
