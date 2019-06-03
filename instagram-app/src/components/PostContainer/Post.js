@@ -19,6 +19,7 @@ export default function post({post}) {
         </ul>
         <p>{post.likes} likes</p>
       </div>
+       <p className="timestamp">{post.timestamp}</p>
       <CommentContainer comments={post.comments}/>
     </div>
   );
