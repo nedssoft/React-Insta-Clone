@@ -1,6 +1,5 @@
 .post-container {
-  width: 400px;
-  margin-left: 10rem;
+  width: 500px;
 }
 .post {
   width: 100%;
@@ -28,10 +27,14 @@ box-shadow: 0px 0px 5px 0px rgba(204,204,204,1);
   padding: 0.8rem;
   font-size: 1.6rem;
 }
+.post .post-image img {
+  object-fit: cover;
+}
 
 .post .post-likes {
   display: flex;
   flex-direction: column;
+  padding-left: 1rem;
 }
 .post .post-likes ul {
   padding: 0;
@@ -51,10 +54,10 @@ box-shadow: 0px 0px 5px 0px rgba(204,204,204,1);
   font-size: 1.6rem;
   margin: 0;
 }
-
 .timestamp {
   font-size: 1.6rem;
   color: #ccc;
   padding-left: 0.8rem;
+  padding-left: 1rem;
 }
 

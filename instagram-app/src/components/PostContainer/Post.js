@@ -1,8 +1,9 @@
 import React from 'react'
+import propType from 'prop-types';
 import './Post.css'
 import CommentContainer from '../CommentSection/CommentContainer'
 
-export default function post({post}) {
+export default function Post({post}) {
   return (
     <div className="post">
       <div className="header">

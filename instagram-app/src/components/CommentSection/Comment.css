@@ -5,7 +5,36 @@
 }
 .comment {
   margin: 0.8rem;
+  padding-left: 1rem;
 }
 .comment p {
   font-size: 1.6rem;
+}
+.comment-form {
+  height: 70px;
+  width: 96%;
+  border-top: 1px solid #ccc;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.8rem;
+  margin: auto;
+}
+.comment-form form {
+  width: 80%;
+}
+.comment-form input {
+  height: 100%;
+  width:100%;
+  outline: none;
+  padding: 2rem 1rem;
+  border: none;
+  font-size: 1.6rem;
+}
+.comment-form button {
+  background: transparent;
+  border: none;
+}
+.comment-form button i {
+  font-size: 1.8rem;
 }
