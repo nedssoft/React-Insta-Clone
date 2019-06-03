@@ -1,5 +1,5 @@
 import React from 'react'
-import propType from 'prop-types';
+import propTypes from 'prop-types';
 import './Post.css'
 import CommentContainer from '../CommentSection/CommentContainer'
 
@@ -16,12 +16,15 @@ export default function Post({post}) {
       <div className="post-likes">
         <ul>
          <li><i className="far fa-heart"></i></li>
-         <li><i className="fas fa-comment"></i></li>
+         <li><i className="far fa-comment"></i></li>
         </ul>
         <p>{post.likes} likes</p>
       </div>
        <p className="timestamp">{post.timestamp}</p>
-      <CommentContainer comments={post.comments}/>
+      <CommentContainer comments={post.comments} />
     </div>
   );
+}
+Post.propTypes = {
+  post: propTypes.objectOf(propTypes.any).isRequired
 }

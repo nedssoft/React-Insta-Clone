@@ -1,5 +1,5 @@
 .post-container {
-  width: 500px;
+  width: 450px;
 }
 .post {
   width: 100%;
@@ -47,7 +47,8 @@ box-shadow: 0px 0px 5px 0px rgba(204,204,204,1);
 }
 .post .post-likes ul li i {
   font-size: 1.8rem;
-  color: #ccc;
+  color: black;
+  font-weight: 100;
 }
 .post .post-likes p {
   padding-left: 0.8rem;

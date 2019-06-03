@@ -43,7 +43,8 @@ ul li {
   padding: 0.5rem 0;
   border: #ffffff;
   font-size: 1.6rem;
-  background-color: rgb(214, 211, 211);
+  background-color: rgba(243, 243, 243, 0.383);
+  border: 1px solid #ccc;
 }
 .icons li i {
  font-size: 1.8rem;
