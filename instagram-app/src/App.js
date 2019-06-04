@@ -27,7 +27,13 @@ class App extends Component {
   likePostHandler = (postId) => {
     const updatedPosts = this.state.posts.map(post => {
       if (post.id === postId) {
-        post['likes'] = post['likes'] + 1;
+        if (post['liked']) {
+          post['likes'] = post['likes']  - 1;
+          post['liked'] = false;
+        } else {
+          post['likes'] = post['likes'] + 1;
+          post['liked'] = true;
+        }
         return post
       }
       return post;
@@ -35,7 +41,7 @@ class App extends Component {
     this.setState(prevState => ({
       ...prevState,
       posts: updatedPosts
-    }))
+    }), () => this.setPost(this.state.posts))
   }
   writeComment = (postId) => {
     const inputEl = document.querySelector(`input[data-post-id="${postId}"]`);

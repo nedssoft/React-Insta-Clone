@@ -5,6 +5,12 @@ import './Post.css'
 import CommentSection from '../CommentSection/CommentSection'
 
 export default function Post({ post, likeHandler, writeComment, updatePostComments }) {
+  let style = {};
+  if (post.liked) {
+    style = {
+      color: 'rgb(165, 58, 76)'
+    }
+  }
   return (
     <div className="post">
       <div className="header">
@@ -16,7 +22,7 @@ export default function Post({ post, likeHandler, writeComment, updatePostCommen
       </div>
       <div className="post-likes">
         <ul>
-          <li onClick={() => likeHandler(post.id)} title="Like"><i className="far fa-heart"></i></li>
+          <li onClick={() => likeHandler(post.id)} title="Like"><i className="far fa-heart" style={style}></i></li>
           <li title="Add comment" onClick={() => writeComment(post.id)}><i className="far fa-comment"></i></li>
         </ul>
         <p>{post.likes} likes</p>

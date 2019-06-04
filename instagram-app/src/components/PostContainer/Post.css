@@ -60,6 +60,10 @@
   color      : black;
   font-weight: 100;
 }
+.post .post-likes ul li i:first-of-type:hover {
+  font-weight: bold;
+  color: rgb(165, 58, 76);
+}
 
 .post .post-likes p {
   padding-left: 0.8rem;
@@ -72,4 +76,8 @@
   color       : #ccc;
   padding-left: 0.8rem;
   padding-left: 1rem;
+}
+
+.liked {
+  color: red;
 }
