@@ -50,6 +50,10 @@
   margin    : auto 0.8rem;
   cursor: pointer;
 }
+.post .post-likes ul li:hover {
+  transform: scale(1.2);
+  transition: 0.2s ease-in-out;
+}
 
 .post .post-likes ul li i {
   font-size  : 1.8rem;

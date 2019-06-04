@@ -4,12 +4,22 @@ import './components/SearchBar/SearchBar'
 import SearchBar from './components/SearchBar/SearchBar';
 import PostContainer from './components/PostContainer/PostContainer'
 import dummyData from './dummy-data';
+import Spinner from './components/UI/Spinner/Spinner'
+
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      posts: dummyData
+      posts: [],
     }
+  }
+  componentDidMount() {
+    setTimeout(() => {
+      this.setState(prevState => ({
+        ...prevState,
+        posts: dummyData,
+      }))
+    }, 5000);
   }
   likePostHandler = (postId) => {
     const updatedPosts = this.state.posts.map(post => {
@@ -19,7 +29,7 @@ class App extends Component {
       }
       return post;
     })
-    this.setState(prevState =>({
+    this.setState(prevState => ({
       ...prevState,
       posts: updatedPosts
     }))
@@ -29,14 +39,20 @@ class App extends Component {
     inputEl.focus();
   }
   render() {
+    let contentToRender = <Spinner />
+    if (this.state.posts.length) {
+      contentToRender = (
+        <PostContainer
+          posts={this.state.posts}
+          likeHandler={this.likePostHandler}
+          writeComment={this.writeComment}
+        />
+      );
+    }
     return (
       <div className="App">
         <SearchBar />
-        <PostContainer 
-        posts={this.state.posts} 
-        likeHandler={this.likePostHandler} 
-        writeComment={this.writeComment}
-        />
+        {contentToRender}
       </div>
     );
   }
