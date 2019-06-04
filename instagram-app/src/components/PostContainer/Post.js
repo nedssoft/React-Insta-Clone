@@ -3,7 +3,7 @@ import propTypes from 'prop-types';
 import './Post.css'
 import CommentSection from '../CommentSection/CommentSection'
 
-export default function Post({post}) {
+export default function Post({post, likeHandler}) {
   return (
     <div className="post">
       <div className="header">
@@ -15,7 +15,7 @@ export default function Post({post}) {
       </div>
       <div className="post-likes">
         <ul>
-         <li><i className="far fa-heart"></i></li>
+         <li onClick={() => likeHandler(post.id)}><i className="far fa-heart"></i></li>
          <li><i className="far fa-comment"></i></li>
         </ul>
         <p>{post.likes} likes</p>

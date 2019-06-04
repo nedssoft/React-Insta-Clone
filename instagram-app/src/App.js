@@ -11,11 +11,24 @@ class App extends Component {
       posts: dummyData
     }
   }
+  likePostHandler = (postId) => {
+    const updatedPosts = this.state.posts.map(post => {
+      if (post.id === postId) {
+        post['likes'] = post['likes'] + 1;
+        return post
+      }
+      return post;
+    })
+    this.setState(prevState =>({
+      ...prevState,
+      posts: updatedPosts
+    }))
+  }
   render() {
     return (
       <div className="App">
         <SearchBar />
-        <PostContainer posts={this.state.posts} />
+        <PostContainer posts={this.state.posts} likeHandler={this.likePostHandler} />
       </div>
     );
   }
