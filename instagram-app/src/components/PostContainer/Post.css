@@ -1,11 +1,5 @@
-.post-container {
-  width: 450px;
-}
-@media (max-width: 500px) {
-  .post-container{
-    width: 90%;
-  }
-}
+
+
 .post {
   width: 100%;
   display: flex;
@@ -34,6 +28,8 @@ box-shadow: 0px 0px 5px 0px rgba(204,204,204,1);
 }
 .post .post-image img {
   object-fit: cover;
+  height: 100%;
+  widows: 100%;
 }
 
 .post .post-likes {

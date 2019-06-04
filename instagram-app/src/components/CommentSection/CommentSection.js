@@ -54,9 +54,12 @@ class CommentSection extends React.Component {
   }
 }
 
-
+CommentSection.defaultProps = {
+  comments: []
+}
 CommentSection.propTypes = {
   comments: pt.array.isRequired,
 }
+
 
 export default CommentSection;
