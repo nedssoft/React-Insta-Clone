@@ -6,12 +6,12 @@ import PostContainer from './components/PostContainer/PostContainer'
 import dummyData from './dummy-data';
 import Spinner from './components/UI/Spinner/Spinner'
 
+localStorage.setItem('posts', JSON.stringify(dummyData));
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
       posts: [],
-      searchResult: null,
       searchTerm: '',
       msg:''
     }
@@ -21,9 +21,9 @@ class App extends Component {
     setTimeout(() => {
       this.setState(prevState => ({
         ...prevState,
-        posts: dummyData,
+        posts: this.getPosts()
       }))
-    }, 5000);
+    }, 1000);
   }
   likePostHandler = (postId) => {
     const updatedPosts = this.state.posts.map(post => {
@@ -54,28 +54,35 @@ class App extends Component {
         if (matchedPosts.length) {
           this.setState(prevState => ({
             ...prevState,
-            searchResult: matchedPosts,
+            posts: matchedPosts,
+            msg: `${matchedPosts.length} post(s) found`
           }))
         } else {
           this.setState(prevState => ({
             ...prevState,
+            posts: [],
             msg: `No post found for username ${this.state.searchTerm}`
           }))
         }
       } else {
         this.setState(prevState => ({
           ...prevState,
-          msg: ','
+          msg: '',
+          posts: this.getPosts()
         }))
       }
     });
+  }
+  getPosts = () => {
+    const posts = JSON.parse(localStorage.getItem('posts'));
+    return posts;
   }
   render() {
     let contentToRender = <Spinner />
     if (this.state.posts.length) {
       contentToRender = (
         <PostContainer
-          posts={this.state.searchResult || this.state.posts}
+          posts={this.state.posts}
           likeHandler={this.likePostHandler}
           writeComment={this.writeComment}
         />
