@@ -1,0 +1,55 @@
+@import url('https://fonts.googleapis.com/css?family=Satisfy&display=swap');
+.search-bar {
+  width: 100%;
+  height: 72px;
+  padding: 0.8rem 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #ccc;
+  margin-bottom: 3rem;
+}
+.logo, .icons {
+  padding: 0 0.8rem;
+  display: flex;
+  width: 200px;
+  height: 100%;
+  justify-content: space-between;
+  align-items: center;
+  height: 50%;
+  
+}
+.logo li {
+  text-align: center;
+}
+
+ul li {
+  list-style: none;
+}
+.logo .logo-img i {
+  font-size: 1.8rem;
+}
+.logo .sep div{
+  height: 2rem;
+  border-right: 1px solid black;
+  width: 1px;
+  background: black;
+}
+.search-input {
+  width: 200px;
+  outline: none;
+  border-radius: 3px;
+  text-align: center;
+  padding: 0.5rem 0;
+  border: #ffffff;
+  font-size: 1.6rem;
+  background-color: rgba(243, 243, 243, 0.383);
+  border: 1px solid #ccc;
+}
+.icons li i {
+ font-size: 1.8rem;
+}
+.logo li h2 {
+  font-size: 3rem;
+  font-family: 'Satisfy', cursive;
+}
