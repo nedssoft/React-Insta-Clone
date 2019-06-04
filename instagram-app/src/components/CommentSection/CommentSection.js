@@ -35,7 +35,10 @@ class CommentSection extends React.Component {
         ...prevState,
         comments: updatedComments,
         newComment: ''
-      }))
+      }), () => {
+        this.props.updatePostComments(this.props.postId, this.state.comments)
+      })
+    
     }
   }
   render() {

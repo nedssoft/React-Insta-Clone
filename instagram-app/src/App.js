@@ -6,7 +6,6 @@ import PostContainer from './components/PostContainer/PostContainer'
 import dummyData from './dummy-data';
 import Spinner from './components/UI/Spinner/Spinner'
 
-localStorage.setItem('posts', JSON.stringify(dummyData));
 class App extends Component {
   constructor(props) {
     super(props);
@@ -75,7 +74,30 @@ class App extends Component {
   }
   getPosts = () => {
     const posts = JSON.parse(localStorage.getItem('posts'));
-    return posts;
+    if (posts) {
+     return posts;
+    } else {
+      localStorage.setItem('posts', JSON.stringify(dummyData));
+      return dummyData;
+    }
+  }
+  setPost = (posts) => {
+    localStorage.removeItem('posts');
+    localStorage.setItem('posts', JSON.stringify(posts));
+    this.setState(prevState => ({
+      ...prevState,
+      posts: posts,
+    }))
+  }
+  updatePostComments = (postId, comments) => {
+    const updatePosts = this.state.posts.map(post => {
+      if (post.id === postId) {
+        post.comments = comments;
+        return post;
+      }
+      return post;
+    });
+    this.setPost(updatePosts);
   }
   render() {
     let contentToRender = <Spinner />
@@ -85,6 +107,7 @@ class App extends Component {
           posts={this.state.posts}
           likeHandler={this.likePostHandler}
           writeComment={this.writeComment}
+          updatePostComments={this.updatePostComments}
         />
       );
     }

@@ -1,29 +1,31 @@
 import React from 'react'
 import propTypes from 'prop-types';
-import moment from 'moment';
 import './Post.css'
 import CommentSection from '../CommentSection/CommentSection'
 
-export default function Post({post, likeHandler, writeComment}) {
- 
+export default function Post({ post, likeHandler, writeComment, updatePostComments }) {
+
   return (
     <div className="post">
       <div className="header">
-        <img src={post.thumbnailUrl} alt=""/>
+        <img src={post.thumbnailUrl} alt="" />
         <h3>{post.username}</h3>
       </div>
       <div className="post-image">
-        <img src={post.imageUrl} alt="" height="200px" width="100%"/>
+        <img src={post.imageUrl} alt="" height="200px" width="100%" />
       </div>
       <div className="post-likes">
         <ul>
-         <li onClick={() => likeHandler(post.id)} title="Like"><i className="far fa-heart"></i></li>
-         <li title="Add comment" onClick={() => writeComment(post.id)}><i className="far fa-comment"></i></li>
+          <li onClick={() => likeHandler(post.id)} title="Like"><i className="far fa-heart"></i></li>
+          <li title="Add comment" onClick={() => writeComment(post.id)}><i className="far fa-comment"></i></li>
         </ul>
         <p>{post.likes} likes</p>
       </div>
-       <p className="timestamp">{post.timestamp}</p>
-      <CommentSection comments={post.comments} postId={post.id} />
+      <p className="timestamp">{post.timestamp}</p>
+      <CommentSection
+        comments={post.comments} postId={post.id}
+        updatePostComments={updatePostComments}
+      />
     </div>
   );
 }
