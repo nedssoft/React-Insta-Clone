@@ -40,3 +40,11 @@
 .comment-form button i {
   font-size: 1.8rem;
 }
+.delete-comment {
+  text-decoration: underline;
+  cursor: pointer;
+}
+.delete-comment:hover {
+  color: rgb(165, 58, 76);
+  transition: .2s ease-in-out;
+}

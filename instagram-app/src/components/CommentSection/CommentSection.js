@@ -41,11 +41,25 @@ class CommentSection extends React.Component {
     
     }
   }
+
+  deleteComment = (commentId) => {
+    const updatedComments = this.state.comments.filter(comment => {
+      return comment.id !== commentId
+    });
+    this.setState(prevState =>({
+      ...prevState,
+      comments: updatedComments,
+    }), () => this.props.updatePostComments(this.props.postId, this.state.comments))
+  }
   render() {
     return (
       <div className="comment-container">
         {this.state.comments.map(comment => (
-          <Comment comment={comment} key={comment.id} />
+          <Comment 
+          comment={comment} 
+          key={comment.id}
+          deleteComment={this.deleteComment} 
+          />
         ))}
         <CommentForm
           commentInputHandler={this.commentInputHandler}
