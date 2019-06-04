@@ -1,10 +1,10 @@
 import React from 'react'
 import propTypes from 'prop-types';
+import moment from 'moment';
 import './Post.css'
 import CommentSection from '../CommentSection/CommentSection'
 
 export default function Post({ post, likeHandler, writeComment, updatePostComments }) {
-
   return (
     <div className="post">
       <div className="header">
@@ -21,7 +21,7 @@ export default function Post({ post, likeHandler, writeComment, updatePostCommen
         </ul>
         <p>{post.likes} likes</p>
       </div>
-      <p className="timestamp">{post.timestamp}</p>
+      <p className="timestamp">{moment(post.timestamp, 'mm/dd/Y, h:m:s a').fromNow()}</p>
       <CommentSection
         comments={post.comments} postId={post.id}
         updatePostComments={updatePostComments}
@@ -32,3 +32,5 @@ export default function Post({ post, likeHandler, writeComment, updatePostCommen
 Post.propTypes = {
   post: propTypes.objectOf(propTypes.any).isRequired
 }
+
+
