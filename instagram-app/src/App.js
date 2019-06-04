@@ -11,7 +11,11 @@ class App extends Component {
     super(props);
     this.state = {
       posts: [],
+      searchResult: null,
+      searchTerm: '',
+      msg:''
     }
+    
   }
   componentDidMount() {
     setTimeout(() => {
@@ -38,12 +42,40 @@ class App extends Component {
     const inputEl = document.querySelector(`input[data-post-id="${postId}"]`);
     inputEl.focus();
   }
+  searchHandler = ({target}) => {
+    this.setState(prevState =>({
+      ...prevState,
+      searchTerm: target.value,
+    }), () => {
+      if (this.state.searchTerm) {
+        const matchedPosts = this.state.posts.filter(post => {
+          return post.username.includes(this.state.searchTerm)
+        })
+        if (matchedPosts.length) {
+          this.setState(prevState => ({
+            ...prevState,
+            searchResult: matchedPosts,
+          }))
+        } else {
+          this.setState(prevState => ({
+            ...prevState,
+            msg: `No post found for username ${this.state.searchTerm}`
+          }))
+        }
+      } else {
+        this.setState(prevState => ({
+          ...prevState,
+          msg: ','
+        }))
+      }
+    });
+  }
   render() {
     let contentToRender = <Spinner />
     if (this.state.posts.length) {
       contentToRender = (
         <PostContainer
-          posts={this.state.posts}
+          posts={this.state.searchResult || this.state.posts}
           likeHandler={this.likePostHandler}
           writeComment={this.writeComment}
         />
@@ -51,7 +83,8 @@ class App extends Component {
     }
     return (
       <div className="App">
-        <SearchBar />
+        <SearchBar  searchHandler={this.searchHandler} value={this.state.searchTerm}/>
+        {this.state.msg && <p style={{fontSize: '1.6rem', textAlign: 'center'}}>{this.state.msg}</p>}
         {contentToRender}
       </div>
     );

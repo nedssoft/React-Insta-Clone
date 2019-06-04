@@ -1,9 +1,11 @@
 import React from 'react'
 import propTypes from 'prop-types';
+import moment from 'moment';
 import './Post.css'
 import CommentSection from '../CommentSection/CommentSection'
 
 export default function Post({post, likeHandler, writeComment}) {
+ 
   return (
     <div className="post">
       <div className="header">
