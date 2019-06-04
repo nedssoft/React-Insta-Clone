@@ -1,6 +1,11 @@
 .post-container {
   width: 450px;
 }
+@media (max-width: 500px) {
+  .post-container{
+    width: 90%;
+  }
+}
 .post {
   width: 100%;
   display: flex;

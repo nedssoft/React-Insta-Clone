@@ -6,8 +6,8 @@ import Post from  './Post'
 export default function postContainer({posts}) {
   return (
     <div className="post-container">
-      {posts.map((post, i) => (
-        <Post post={post} key={`${post.username}${i}`} />
+      {posts.map(post => (
+        <Post post={post} key={post.id} />
       ))}
     </div>
   );

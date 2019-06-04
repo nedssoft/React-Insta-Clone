@@ -1,7 +1,7 @@
 import React from 'react'
 import propTypes from 'prop-types';
 import './Post.css'
-import CommentContainer from '../CommentSection/CommentContainer'
+import CommentSection from '../CommentSection/CommentSection'
 
 export default function Post({post}) {
   return (
@@ -21,7 +21,7 @@ export default function Post({post}) {
         <p>{post.likes} likes</p>
       </div>
        <p className="timestamp">{post.timestamp}</p>
-      <CommentContainer comments={post.comments} />
+      <CommentSection comments={post.comments} postId={post.id} />
     </div>
   );
 }
