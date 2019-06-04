@@ -24,11 +24,19 @@ class App extends Component {
       posts: updatedPosts
     }))
   }
+  writeComment = (postId) => {
+    const inputEl = document.querySelector(`input[data-post-id="${postId}"]`);
+    inputEl.focus();
+  }
   render() {
     return (
       <div className="App">
         <SearchBar />
-        <PostContainer posts={this.state.posts} likeHandler={this.likePostHandler} />
+        <PostContainer 
+        posts={this.state.posts} 
+        likeHandler={this.likePostHandler} 
+        writeComment={this.writeComment}
+        />
       </div>
     );
   }

@@ -48,6 +48,7 @@ class CommentSection extends React.Component {
           commentInputHandler={this.commentInputHandler}
           addComment={this.addComment}
           value={this.state.newComment}
+          postId={this.props.postId}
         />
       </div>
     );
