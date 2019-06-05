@@ -1,6 +1,5 @@
 import React from 'react'
 import './Login.css';
-
 export default class Login extends React.Component {
   state = {
     form: {
@@ -10,7 +9,6 @@ export default class Login extends React.Component {
     
   }
   loginHandler = (event) => {
-    console.log(Object.keys(this.props))
     event.preventDefault();
     if (this.state.form.username && this.state.form.password) {
       const newUser = {

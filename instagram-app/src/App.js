@@ -15,6 +15,7 @@ class App extends Component {
       searchTerm: '',
       msg: '',
       isLoggedIn: false,
+      showDropDown: false,
     }
 
   }
@@ -115,11 +116,30 @@ class App extends Component {
       isLoggedIn: true,
     }));
   }
+  toggleDropDown = () => {
+    this.setState(prevState => ({
+      ...prevState,
+      showDropDown: !prevState.showDropDown
+    }))
+  }
+  logout = () => {
+    localStorage.removeItem('user');
+    this.setState(prevState =>({
+      ...prevState,
+      isLoggedIn: false,
+    }))
+  }
   render() {
     const ComponentFromWithAuthenticate = withAuthenticate(PostPage)(LoginPage)
     return (
       <div className="App">
-        <SearchBar searchHandler={this.searchHandler} value={this.state.searchTerm} />
+        <SearchBar 
+        searchHandler={this.searchHandler} 
+        value={this.state.searchTerm} 
+        showDropDown={this.state.isLoggedIn && this.state.showDropDown}
+        toggleDropDown={this.toggleDropDown}
+        logout={this.logout}
+        />
         {this.state.msg && <p style={{ fontSize: '1.6rem', textAlign: 'center' }}>{this.state.msg}</p>}
         {<ComponentFromWithAuthenticate
           posts={this.state.posts}

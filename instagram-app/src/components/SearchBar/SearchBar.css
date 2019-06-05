@@ -54,6 +54,7 @@ ul li {
 
 .logo .logo-img i {
   font-size: 1.8rem;
+  cursor: pointer;
 }
 
 .logo .sep div {
@@ -84,6 +85,7 @@ ul li {
 
 .icons li i {
   font-size: 1.8rem;
+  cursor: pointer;
 }
 
 .logo li h2 {
