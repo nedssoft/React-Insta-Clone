@@ -20,11 +20,11 @@ export default function login() {
       </form>
       <div className="separator">
         <div className="line"></div>
-        <div>or</div>
+        <div className="or">or</div>
         <div className="line"></div>
       </div>
-      <p><i className="fab fa-facebook-square"></i> Log In With Facebook</p>
-      <p>Forgot Password?</p>
+      <p className="fb"><i className="fab fa-facebook-square"></i> Log In With Facebook</p>
+      <p className="forgot-password">Forgot Password?</p>
     </div>
   )
 }

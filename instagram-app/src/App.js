@@ -6,6 +6,7 @@ import PostPage from './components/PostContainer/PostPage'
 import dummyData from './dummy-data';
 import Spinner from './components/UI/Spinner/Spinner'
 import withAuthenticate from './components/authentication/withAuthenticate'
+import Login from './components/Login/Login'
 
 class App extends Component {
   constructor(props) {
@@ -108,8 +109,9 @@ class App extends Component {
   }
   render() {
     const ComponentFromWithAuthenticate = withAuthenticate(PostPage)
-    let contentToRender = <Spinner />
-    if (this.state.posts.length) {
+    // let contentToRender = <Spinner />
+    let contentToRender = <Login />
+    if (!this.state.posts.length) {
       contentToRender = (
         <ComponentFromWithAuthenticate
           posts={this.state.posts}
