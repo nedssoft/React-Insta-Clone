@@ -4,9 +4,8 @@ import './components/SearchBar/SearchBar'
 import SearchBar from './components/SearchBar/SearchBar';
 import PostPage from './components/PostContainer/PostPage'
 import dummyData from './dummy-data';
-import Spinner from './components/UI/Spinner/Spinner'
 import withAuthenticate from './components/authentication/withAuthenticate'
-import Login from './components/Login/Login'
+import LoginPage from './components/Login/Login'
 
 class App extends Component {
   constructor(props) {
@@ -20,13 +19,13 @@ class App extends Component {
 
   }
   componentDidMount() {
- 
+    setTimeout(() => {
       this.setState(prevState => ({
         ...prevState,
         posts: this.getPosts(),
         isLoggedIn: !!localStorage.getItem('user')
       }))
-   
+    }, 500);
   }
   likePostHandler = (postId) => {
     const updatedPosts = this.state.posts.map(post => {
@@ -115,30 +114,20 @@ class App extends Component {
       ...prevState,
       isLoggedIn: true,
     }));
-    window.location.reload()
   }
   render() {
-    const ComponentFromWithAuthenticate = withAuthenticate(PostPage)
-    // let contentToRender = <Spinner />
-    let contentToRender = <Login loginUser={this.loginUser}/>
-    if (this.state.isLoggedIn) {
-      contentToRender = <Spinner />
-    if (this.state.posts.length) {
-      contentToRender = (
-        <ComponentFromWithAuthenticate
-          posts={this.state.posts}
-          likeHandler={this.likePostHandler}
-          writeComment={this.writeComment}
-          updatePostComments={this.updatePostComments}
-        />
-      );
-    }
-  }
+    const ComponentFromWithAuthenticate = withAuthenticate(PostPage)(LoginPage)
     return (
       <div className="App">
         <SearchBar searchHandler={this.searchHandler} value={this.state.searchTerm} />
         {this.state.msg && <p style={{ fontSize: '1.6rem', textAlign: 'center' }}>{this.state.msg}</p>}
-        {contentToRender}
+        {<ComponentFromWithAuthenticate
+          posts={this.state.posts}
+          likeHandler={this.likePostHandler}
+          writeComment={this.writeComment}
+          updatePostComments={this.updatePostComments}
+          loginUser={this.loginUser}
+        />}
       </div>
     );
   }

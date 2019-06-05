@@ -10,6 +10,7 @@ export default class Login extends React.Component {
     
   }
   loginHandler = (event) => {
+    console.log(Object.keys(this.props))
     event.preventDefault();
     if (this.state.form.username && this.state.form.password) {
       const newUser = {
@@ -18,6 +19,7 @@ export default class Login extends React.Component {
         password: this.state.form.password,
       }
       this.props.loginUser(newUser)
+
     }
   }
   inputChangeHandler = (event) => {
