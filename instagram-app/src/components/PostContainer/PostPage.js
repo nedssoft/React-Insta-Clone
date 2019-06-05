@@ -3,7 +3,7 @@ import pt from 'prop-types'
 import './Post.css'
 import Post from './Post'
 
-export default function postContainer({ posts, likeHandler, writeComment, updatePostComments }) {
+export default function postPage({ posts, likeHandler, writeComment, updatePostComments }) {
   return (
     <div className="post-container">
       {posts.map(post => (
@@ -18,6 +18,6 @@ export default function postContainer({ posts, likeHandler, writeComment, update
   );
 }
 
-postContainer.propTypes = {
+postPage.propTypes = {
   posts: pt.arrayOf(pt.object)
 }

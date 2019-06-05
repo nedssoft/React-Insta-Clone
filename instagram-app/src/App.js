@@ -2,9 +2,10 @@ import React, { Component } from 'react';
 import './App.css';
 import './components/SearchBar/SearchBar'
 import SearchBar from './components/SearchBar/SearchBar';
-import PostContainer from './components/PostContainer/PostContainer'
+import PostPage from './components/PostContainer/PostPage'
 import dummyData from './dummy-data';
 import Spinner from './components/UI/Spinner/Spinner'
+import withAuthenticate from './components/authentication/withAuthenticate'
 
 class App extends Component {
   constructor(props) {
@@ -12,9 +13,9 @@ class App extends Component {
     this.state = {
       posts: [],
       searchTerm: '',
-      msg:''
+      msg: ''
     }
-    
+
   }
   componentDidMount() {
     setTimeout(() => {
@@ -28,7 +29,7 @@ class App extends Component {
     const updatedPosts = this.state.posts.map(post => {
       if (post.id === postId) {
         if (post['liked']) {
-          post['likes'] = post['likes']  - 1;
+          post['likes'] = post['likes'] - 1;
           post['liked'] = false;
         } else {
           post['likes'] = post['likes'] + 1;
@@ -47,8 +48,8 @@ class App extends Component {
     const inputEl = document.querySelector(`input[data-post-id="${postId}"]`);
     inputEl.focus();
   }
-  searchHandler = ({target}) => {
-    this.setState(prevState =>({
+  searchHandler = ({ target }) => {
+    this.setState(prevState => ({
       ...prevState,
       searchTerm: target.value,
     }), () => {
@@ -81,7 +82,7 @@ class App extends Component {
   getPosts = () => {
     const posts = JSON.parse(localStorage.getItem('posts'));
     if (posts) {
-     return posts;
+      return posts;
     } else {
       localStorage.setItem('posts', JSON.stringify(dummyData));
       return dummyData;
@@ -106,10 +107,11 @@ class App extends Component {
     this.setPost(updatePosts);
   }
   render() {
+    const ComponentFromWithAuthenticate = withAuthenticate(PostPage)
     let contentToRender = <Spinner />
     if (this.state.posts.length) {
       contentToRender = (
-        <PostContainer
+        <ComponentFromWithAuthenticate
           posts={this.state.posts}
           likeHandler={this.likePostHandler}
           writeComment={this.writeComment}
@@ -119,8 +121,8 @@ class App extends Component {
     }
     return (
       <div className="App">
-        <SearchBar  searchHandler={this.searchHandler} value={this.state.searchTerm}/>
-        {this.state.msg && <p style={{fontSize: '1.6rem', textAlign: 'center'}}>{this.state.msg}</p>}
+        <SearchBar searchHandler={this.searchHandler} value={this.state.searchTerm} />
+        {this.state.msg && <p style={{ fontSize: '1.6rem', textAlign: 'center' }}>{this.state.msg}</p>}
         {contentToRender}
       </div>
     );
