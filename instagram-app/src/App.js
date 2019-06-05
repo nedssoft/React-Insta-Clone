@@ -133,13 +133,15 @@ class App extends Component {
     const ComponentFromWithAuthenticate = withAuthenticate(PostPage)(LoginPage)
     return (
       <div className="App">
-        <SearchBar 
+        {this.state.isLoggedIn && (
+          <SearchBar 
         searchHandler={this.searchHandler} 
         value={this.state.searchTerm} 
         showDropDown={this.state.isLoggedIn && this.state.showDropDown}
         toggleDropDown={this.toggleDropDown}
         logout={this.logout}
         />
+        )}
         {this.state.msg && <p style={{ fontSize: '1.6rem', textAlign: 'center' }}>{this.state.msg}</p>}
         {<ComponentFromWithAuthenticate
           posts={this.state.posts}

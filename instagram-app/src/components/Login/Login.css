@@ -1,5 +1,6 @@
 .login {
   margin: auto;
+  margin-top: 10rem;
   width: 300px;
   display: flex;
   flex-direction: column;
