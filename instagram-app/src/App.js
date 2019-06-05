@@ -14,7 +14,8 @@ class App extends Component {
     this.state = {
       posts: [],
       searchTerm: '',
-      msg: ''
+      msg: '',
+      isLoggedIn: false,
     }
 
   }
@@ -107,10 +108,17 @@ class App extends Component {
     });
     this.setPost(updatePosts);
   }
+  loginUser = (user) => {
+    localStorage.setItem('user', JSON.stringify(user));
+    this.setState(prevState => ({
+      ...prevState,
+      isLoggedIn: true,
+    }))
+  }
   render() {
     const ComponentFromWithAuthenticate = withAuthenticate(PostPage)
     // let contentToRender = <Spinner />
-    let contentToRender = <Login />
+    let contentToRender = <Login loginUser={this.loginUser}/>
     if (!this.state.posts.length) {
       contentToRender = (
         <ComponentFromWithAuthenticate
