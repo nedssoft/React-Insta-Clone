@@ -20,12 +20,13 @@ class App extends Component {
 
   }
   componentDidMount() {
-    setTimeout(() => {
+ 
       this.setState(prevState => ({
         ...prevState,
-        posts: this.getPosts()
+        posts: this.getPosts(),
+        isLoggedIn: !!localStorage.getItem('user')
       }))
-    }, 1000);
+   
   }
   likePostHandler = (postId) => {
     const updatedPosts = this.state.posts.map(post => {
@@ -113,13 +114,16 @@ class App extends Component {
     this.setState(prevState => ({
       ...prevState,
       isLoggedIn: true,
-    }))
+    }));
+    window.location.reload()
   }
   render() {
     const ComponentFromWithAuthenticate = withAuthenticate(PostPage)
     // let contentToRender = <Spinner />
     let contentToRender = <Login loginUser={this.loginUser}/>
-    if (!this.state.posts.length) {
+    if (this.state.isLoggedIn) {
+      contentToRender = <Spinner />
+    if (this.state.posts.length) {
       contentToRender = (
         <ComponentFromWithAuthenticate
           posts={this.state.posts}
@@ -129,6 +133,7 @@ class App extends Component {
         />
       );
     }
+  }
     return (
       <div className="App">
         <SearchBar searchHandler={this.searchHandler} value={this.state.searchTerm} />
