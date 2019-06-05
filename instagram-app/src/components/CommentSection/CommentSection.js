@@ -12,20 +12,30 @@ class CommentSection extends React.Component {
       comments: this.props.comments,
       postId: this.props.postId,
       newComment: '',
+      user: null,
     }
   }
-  commentInputHandler = ({target}) => {
-    const value = target.value;
-      this.setState(prevState => ({
-        ...prevState,
-        newComment: value,
-      }))
+
+  componentDidMount() {
+    this.setState(prevState => ({
+      ...prevState,
+      user: JSON.parse(localStorage.getItem('user'))
+    }))
   }
-  addComment =(event) => {
+
+  commentInputHandler = ({ target }) => {
+    const value = target.value;
+    this.setState(prevState => ({
+      ...prevState,
+      newComment: value,
+    }))
+  }
+  
+  addComment = (event) => {
     event.preventDefault();
     const newComment = {
-      id: this.state.comments.length +1,
-      username:'JonDoe',
+      id: this.state.comments.length + 1,
+      username: this.state.user.username,
       text: this.state.newComment,
     }
     const oldComments = this.state.comments;
@@ -38,7 +48,7 @@ class CommentSection extends React.Component {
       }), () => {
         this.props.updatePostComments(this.props.postId, this.state.comments)
       })
-    
+
     }
   }
 
@@ -46,7 +56,7 @@ class CommentSection extends React.Component {
     const updatedComments = this.state.comments.filter(comment => {
       return comment.id !== commentId
     });
-    this.setState(prevState =>({
+    this.setState(prevState => ({
       ...prevState,
       comments: updatedComments,
     }), () => this.props.updatePostComments(this.props.postId, this.state.comments))
@@ -55,10 +65,10 @@ class CommentSection extends React.Component {
     return (
       <div className="comment-container">
         {this.state.comments.map(comment => (
-          <Comment 
-          comment={comment} 
-          key={comment.id}
-          deleteComment={this.deleteComment} 
+          <Comment
+            comment={comment}
+            key={comment.id}
+            deleteComment={this.deleteComment}
           />
         ))}
         <CommentForm
