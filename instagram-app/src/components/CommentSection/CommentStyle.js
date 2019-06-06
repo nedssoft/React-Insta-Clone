@@ -6,6 +6,5 @@ const commentSectionWrapper = styled.div`
   display: flex;
   flex-direction: column;
 `
-
 export default commentSectionWrapper
 
