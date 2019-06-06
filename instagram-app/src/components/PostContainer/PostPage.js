@@ -1,6 +1,5 @@
 import React from 'react'
 import pt from 'prop-types'
-import './Post.css'
 import Post from './Post'
 import Spinner from '../UI/Spinner/Spinner'
 

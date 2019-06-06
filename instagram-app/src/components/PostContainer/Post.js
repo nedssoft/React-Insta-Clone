@@ -1,7 +1,7 @@
 import React from 'react'
 import propTypes from 'prop-types';
 import moment from 'moment';
-import './Post.css'
+import PostWrapper from './PostStyle';
 import CommentSection from '../CommentSection/CommentSection'
 
 export default function Post({ post, likeHandler, writeComment, updatePostComments }) {
@@ -12,7 +12,7 @@ export default function Post({ post, likeHandler, writeComment, updatePostCommen
     }
   }
   return (
-    <div className="post">
+    <PostWrapper>
       <div className="header">
         <img src={post.thumbnailUrl} alt="" />
         <h3>{post.username}</h3>
@@ -32,7 +32,7 @@ export default function Post({ post, likeHandler, writeComment, updatePostCommen
         comments={post.comments} postId={post.id}
         updatePostComments={updatePostComments}
       />
-    </div>
+    </PostWrapper>
   );
 }
 Post.propTypes = {
