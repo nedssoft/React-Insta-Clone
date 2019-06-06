@@ -15,6 +15,9 @@ const Icons = styled.ul`
     padding: 0;
     margin: 2rem auto;
   }
+  li {
+    list-style: none;
+  }
   li i {
     font-size: 1.8rem;
     cursor: pointer;

@@ -17,8 +17,11 @@ const HeaderLogo = styled.ul`
   }
   li {
     text-align: center;
+    list-style: none;
   }
   li h2 {
+    margin: 0;
+    padding: 0;
     font-size  : 3rem;
     font-family: 'Satisfy', cursive;
   }
