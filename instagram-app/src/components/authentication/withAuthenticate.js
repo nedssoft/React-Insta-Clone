@@ -17,7 +17,7 @@ const withAuthenticate = PostsPage => LoginPage => {
         )
       } else {
         return (
-          <LoginPage {...this.props} />
+          <LoginPage loginUser={this.props.loginUser} />
         )
       }
     }
