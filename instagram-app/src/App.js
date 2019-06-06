@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './App.css';
+import AppWrapper from './AppStyle'
 import './components/SearchBar/SearchBar'
 import SearchBar from './components/SearchBar/SearchBar';
 import PostPage from './components/PostContainer/PostPage'
@@ -132,7 +132,7 @@ class App extends Component {
   render() {
     const ComponentFromWithAuthenticate = withAuthenticate(PostPage)(LoginPage)
     return (
-      <div className="App">
+      <AppWrapper>
         {this.state.isLoggedIn && (
           <SearchBar 
         searchHandler={this.searchHandler} 
@@ -150,7 +150,7 @@ class App extends Component {
           updatePostComments={this.updatePostComments}
           loginUser={this.loginUser}
         />}
-      </div>
+      </AppWrapper>
     );
   }
 }

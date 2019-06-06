@@ -1,9 +1,8 @@
 import React from 'react'
 import pt from 'prop-types';
-
-import './Comment.css'
 import Comment from './Comment'
 import CommentForm from './CommentForm'
+import CommentSectionWrapper from './CommentStyle'
 
 class CommentSection extends React.Component {
   constructor(props) {
@@ -63,7 +62,7 @@ class CommentSection extends React.Component {
   }
   render() {
     return (
-      <div className="comment-container">
+      <CommentSectionWrapper>
         {this.state.comments.map(comment => (
           <Comment
             comment={comment}
@@ -77,7 +76,7 @@ class CommentSection extends React.Component {
           value={this.state.newComment}
           postId={this.props.postId}
         />
-      </div>
+      </CommentSectionWrapper>
     );
   }
 }

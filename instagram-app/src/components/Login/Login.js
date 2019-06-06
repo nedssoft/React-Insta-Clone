@@ -1,5 +1,5 @@
 import React from 'react'
-import './Login.css';
+import LoginWrapper from './LoginStyle'
 export default class Login extends React.Component {
   state = {
     form: {
@@ -42,7 +42,7 @@ export default class Login extends React.Component {
   // }
   render() {
     return (
-      <div className="login">
+      <LoginWrapper>
         <h2>Instagram</h2>
         <form onSubmit={this.loginHandler}>
           <input
@@ -66,7 +66,7 @@ export default class Login extends React.Component {
         </div>
         <p className="fb"><i className="fab fa-facebook-square"></i> Log In With Facebook</p>
         <p className="forgot-password">Forgot Password?</p>
-      </div>
+      </LoginWrapper>
     )
   }
 }
