@@ -2,11 +2,10 @@ import React from 'react'
 import propTypes from 'prop-types';
 import './Comment.css'
 
-
-function Comment({ comment }) {
+function Comment({ comment, deleteComment }) {
   return (
     <div className="comment">
-      <p><strong>{comment.username}</strong> {comment.text}</p>
+      <p><strong>{comment.username}</strong> {comment.text} | <span className="delete-comment" onClick={() => deleteComment(comment.id)}>Delete</span></p>
     </div>
   );
 }
