@@ -50,13 +50,13 @@ export default class Login extends React.Component {
             name="username"
             placeholder="Phone number, username, or email"
             onChange={this.inputChangeHandler}
-          />
-          <input
-            type="password"
+            />
+            <input
             name="password"
             placeholder="Password"
             onChange={this.inputChangeHandler}
-          />
+            type="password"
+            />
           <button>Log In</button>
         </form>
         <div className="separator">

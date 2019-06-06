@@ -6,7 +6,7 @@ const SearchInput = styled.input`
   outline         : none;
   border-radius   : 3px;
   text-align      : center;
-  padding         : 0.5rem;
+  padding         : 0.8rem;
   border          : #ffffff;
   font-size       : 1.6rem;
   background-color: rgba(243, 243, 243, 0.383);
