@@ -1,12 +1,26 @@
 import React from 'react'
 import propTypes from 'prop-types';
-import './Comment.css'
-
+import styled from 'styled-components';
+const CommentWrapper = styled.div`
+  margin: 0.8rem;
+  padding-left: 1rem;
+  p {
+    font-size: 1.6rem;
+  }
+  .delete-comment {
+    text-decoration: underline;
+    cursor: pointer;
+  }
+  .delete-comment:hover {
+    color: rgb(165, 58, 76);
+    transition: .2s ease-in-out;
+  }
+`
 function Comment({ comment, deleteComment }) {
   return (
-    <div className="comment">
+    <CommentWrapper>
       <p><strong>{comment.username}</strong> {comment.text} | <span className="delete-comment" onClick={() => deleteComment(comment.id)}>Delete</span></p>
-    </div>
+    </CommentWrapper>
   );
 }
 
