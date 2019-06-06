@@ -6,6 +6,8 @@ const CommentWrapper = styled.div`
   padding-left: 1rem;
   p {
     font-size: 1.6rem;
+    padding:0;
+    margin:0;
   }
   .delete-comment {
     text-decoration: underline;
