@@ -15,8 +15,8 @@ const SearchBar = styled.div`
   margin-bottom  : 3rem;
   @media (max-width: 500px) {
       flex-direction: column;
-      height: 100%;
-      padding: 0;
+      height: max-content;
+      padding: 2rem 0;
     }
 `
 export default function searchBar({ searchHandler, showDropDown, toggleDropDown, logout}) {

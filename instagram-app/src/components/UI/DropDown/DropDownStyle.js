@@ -12,6 +12,10 @@ const dropdownWrapper = styled.ul`
   z-index: 1000;
   position: absolute;
   top: 72px;
+  @media (max-width: 500px) {
+    right: 40px;
+    top: 140px;
+  }
   .dropDown-item {
     text-align: center;
     padding: 0.8rem 0;

@@ -6,10 +6,8 @@ const Icons = styled.ul`
   padding        : 0 0.8rem;
   display        : flex;
   width          : 200px;
-  height         : 100%;
   justify-content: space-between;
   align-items    : center;
-  height         : 50%;
   @media (max-width: 500px) {
     width: 100%;
     padding: 0;
